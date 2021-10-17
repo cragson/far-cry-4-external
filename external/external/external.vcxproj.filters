@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Files\Osmium">
+      <UniqueIdentifier>{56382780-66aa-47cd-b6c7-5b203b355995}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Files\Globals">
+      <UniqueIdentifier>{2dfd974c-6ceb-44d3-b214-9e0bb8c30e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Files\Features">
+      <UniqueIdentifier>{83654260-6540-4791-ab4a-bab7d7070df2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="osmium\Memory\Process\process.cpp">
+      <Filter>Files\Osmium</Filter>
+    </ClCompile>
+    <ClCompile Include="osmium\Memory\Image_x64\image_x64.cpp">
+      <Filter>Files\Osmium</Filter>
+    </ClCompile>
+    <ClCompile Include="farcry_cheat.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ft_infinite_ammo.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="ft_infinite_throwables.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="ft_free_vendor.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="osmium\Memory\Process\process.hpp">
+      <Filter>Files\Osmium</Filter>
+    </ClInclude>
+    <ClInclude Include="osmium\Memory\Image_x64\image_x64.hpp">
+      <Filter>Files\Osmium</Filter>
+    </ClInclude>
+    <ClInclude Include="osmium\Includings\custom_data_types.hpp">
+      <Filter>Files\Osmium</Filter>
+    </ClInclude>
+    <ClInclude Include="osmium\Cheat\cheat.hpp">
+      <Filter>Files\Osmium</Filter>
+    </ClInclude>
+    <ClInclude Include="osmium\Cheat\Feature\feature.hpp">
+      <Filter>Files\Osmium</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.hpp">
+      <Filter>Files\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="farcry_cheat.hpp">
+      <Filter>Files</Filter>
+    </ClInclude>
+    <ClInclude Include="offsets.hpp">
+      <Filter>Files\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_infinite_ammo.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_infinite_throwables.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_free_vendor.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.hpp">
+      <Filter>Files\Globals</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
