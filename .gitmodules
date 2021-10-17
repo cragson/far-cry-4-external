@@ -1,0 +1,3 @@
+[submodule "external/external/osmium"]
+	path = external/external/osmium
+	url = https://github.com/cragson/osmium
