@@ -149,6 +149,7 @@
     <ClCompile Include="ft_infinite_ammo.cpp" />
     <ClCompile Include="ft_infinite_stimpacks.cpp" />
     <ClCompile Include="ft_infinite_throwables.cpp" />
+    <ClCompile Include="ft_unlock_buyables.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="osmium\Memory\Image_x64\image_x64.cpp" />
     <ClCompile Include="osmium\Memory\Process\process.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="ft_infinite_ammo.hpp" />
     <ClInclude Include="ft_infinite_stimpacks.hpp" />
     <ClInclude Include="ft_infinite_throwables.hpp" />
+    <ClInclude Include="ft_unlock_buyables.hpp" />
     <ClInclude Include="globals.hpp" />
     <ClInclude Include="offsets.hpp" />
     <ClInclude Include="osmium\Cheat\cheat.hpp" />
