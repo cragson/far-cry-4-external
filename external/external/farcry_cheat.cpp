@@ -8,6 +8,7 @@
 #include "ft_infinite_stimpacks.hpp"
 #include "ft_god_mode.hpp"
 #include "ft_unlock_buyables.hpp"
+#include "ft_infinite_backpack.hpp"
 
 bool farcry_cheat::setup_features()
 {
@@ -52,6 +53,13 @@ bool farcry_cheat::setup_features()
 	unlock_buyables->set_activation_delay( 500 );
 	unlock_buyables->set_print_status( true );
 	this->m_features.push_back( std::move( unlock_buyables ) );
+
+	auto infinite_backpack = std::make_unique< ft_infinite_backpack >();
+	infinite_backpack->set_name( L"Infinite Backpack" );
+	infinite_backpack->set_virtual_key_code( VK_NUMPAD7 );
+	infinite_backpack->set_activation_delay( 500 );
+	infinite_backpack->set_print_status( true );
+	this->m_features.push_back( std::move( infinite_backpack ) );
 	
     return true;
 }
@@ -123,6 +131,14 @@ bool farcry_cheat::setup_offsets()
 		return false;
 
 	Offsets::unlock_buyables_patch = unlock_buyables + 3;
+
+
+	const auto infinite_backpack = image->find_pattern( L"8B 4B 04 E8 08 FB 21 00", false );
+
+	if( !infinite_backpack )
+		return false;
+
+	Offsets::infinite_backpack_patch = infinite_backpack;
 	
     return true;
 }
@@ -174,13 +190,14 @@ void farcry_cheat::print_offsets()
 		printf("[>] %-35ws -> 0x%llX\n", name.c_str(), value);
 	};
 
-	msg(L"Infinite Ammo Patch", Offsets::infinite_ammo_patch);
-	msg(L"Infinite Throwables Patch", Offsets::infinite_throwables_patch);
-	msg(L"Free Vendor Patch", Offsets::free_vendor_patch);
+	msg(L"Infinite Ammo Patch", Offsets::infinite_ammo_patch );
+	msg(L"Infinite Throwables Patch", Offsets::infinite_throwables_patch );
+	msg(L"Free Vendor Patch", Offsets::free_vendor_patch );
 	msg( L"Infinite Bow Arrows Patch", Offsets::infinite_arrows_patch );
 	msg( L"Infinite Stimpacks Patch", Offsets::infinite_stimpacks_patch );
 	msg( L"God Mode Patch", Offsets::god_mode_patch );
-	msg( L"Unlock Buyables", Offsets::unlock_buyables_patch );
+	msg( L"Unlock Buyables Patch", Offsets::unlock_buyables_patch );
+	msg( L"Infinite Backpack Patch", Offsets::infinite_backpack_patch );
 
 	printf("\n");
 }

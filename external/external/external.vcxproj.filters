@@ -50,6 +50,9 @@
     <ClCompile Include="ft_god_mode.cpp">
       <Filter>Files\Features</Filter>
     </ClCompile>
+    <ClCompile Include="ft_infinite_backpack.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="osmium\Memory\Process\process.hpp">
@@ -95,6 +98,9 @@
       <Filter>Files\Features</Filter>
     </ClInclude>
     <ClInclude Include="ft_unlock_buyables.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_infinite_backpack.hpp">
       <Filter>Files\Features</Filter>
     </ClInclude>
   </ItemGroup>
