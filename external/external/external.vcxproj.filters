@@ -44,8 +44,11 @@
     <ClCompile Include="ft_infinite_stimpacks.cpp">
       <Filter>Files\Features</Filter>
     </ClCompile>
+    <ClCompile Include="ft_unlock_buyables.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
     <ClCompile Include="ft_god_mode.cpp">
-      <Filter>Files</Filter>
+      <Filter>Files\Features</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +92,9 @@
       <Filter>Files\Features</Filter>
     </ClInclude>
     <ClInclude Include="ft_god_mode.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_unlock_buyables.hpp">
       <Filter>Files\Features</Filter>
     </ClInclude>
   </ItemGroup>

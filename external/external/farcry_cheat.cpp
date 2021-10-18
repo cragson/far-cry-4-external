@@ -7,6 +7,7 @@
 #include "utils.hpp"
 #include "ft_infinite_stimpacks.hpp"
 #include "ft_god_mode.hpp"
+#include "ft_unlock_buyables.hpp"
 
 bool farcry_cheat::setup_features()
 {
@@ -44,6 +45,13 @@ bool farcry_cheat::setup_features()
 	god_mode->set_activation_delay( 500 );
 	god_mode->set_print_status( true );
 	this->m_features.push_back( std::move( god_mode ) );
+
+	auto unlock_buyables = std::make_unique< ft_unlock_buyables >();
+	unlock_buyables->set_name( L"Unlock Buyables" );
+	unlock_buyables->set_virtual_key_code( VK_NUMPAD6 );
+	unlock_buyables->set_activation_delay( 500 );
+	unlock_buyables->set_print_status( true );
+	this->m_features.push_back( std::move( unlock_buyables ) );
 	
     return true;
 }
@@ -106,6 +114,15 @@ bool farcry_cheat::setup_offsets()
 		return false;
 
 	Offsets::god_mode_patch = god_mode;
+
+
+	// credits: gir489
+	const auto unlock_buyables = image->find_pattern( L"4C 8B FA 74 0A", false );
+
+	if( !unlock_buyables )
+		return false;
+
+	Offsets::unlock_buyables_patch = unlock_buyables + 3;
 	
     return true;
 }
@@ -163,6 +180,7 @@ void farcry_cheat::print_offsets()
 	msg( L"Infinite Bow Arrows Patch", Offsets::infinite_arrows_patch );
 	msg( L"Infinite Stimpacks Patch", Offsets::infinite_stimpacks_patch );
 	msg( L"God Mode Patch", Offsets::god_mode_patch );
+	msg( L"Unlock Buyables", Offsets::unlock_buyables_patch );
 
 	printf("\n");
 }
