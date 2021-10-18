@@ -22,13 +22,13 @@ int main()
 
 	printf("[+] Scanning for signatures..");
 
-	while (!Globals::g_pCheat->setup_offsets())
+	while ( !Globals::g_pCheat->setup_offsets() )
 	{
 		printf(".");
 
-		Sleep(1420);
+		Sleep( 1420 );
 	}
-	printf("done!\n");
+	printf( "done!\n" );
 
 	Globals::g_pCheat->print_offsets();
 
@@ -36,14 +36,14 @@ int main()
 
 	Globals::g_pCheat->print_features();
 
-	while (true)
+	while ( true )
 	{
 		Globals::g_pCheat->run();
 
-		if (utils::is_key_pressed(VK_END))
+		if ( utils::is_key_pressed( VK_END ) )
 			break;
 
-		Sleep(3);
+		Sleep( 3 );
 	}
 
 	Globals::g_pCheat->shutdown();

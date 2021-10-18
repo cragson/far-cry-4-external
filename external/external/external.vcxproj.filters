@@ -41,6 +41,12 @@
     <ClCompile Include="ft_free_vendor.cpp">
       <Filter>Files\Features</Filter>
     </ClCompile>
+    <ClCompile Include="ft_infinite_stimpacks.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="ft_god_mode.cpp">
+      <Filter>Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="osmium\Memory\Process\process.hpp">
@@ -78,6 +84,12 @@
     </ClInclude>
     <ClInclude Include="utils.hpp">
       <Filter>Files\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_infinite_stimpacks.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_god_mode.hpp">
+      <Filter>Files\Features</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

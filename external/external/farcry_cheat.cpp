@@ -5,6 +5,8 @@
 #include "ft_infinite_throwables.hpp"
 #include "ft_free_vendor.hpp"
 #include "utils.hpp"
+#include "ft_infinite_stimpacks.hpp"
+#include "ft_god_mode.hpp"
 
 bool farcry_cheat::setup_features()
 {
@@ -23,11 +25,25 @@ bool farcry_cheat::setup_features()
 	this->m_features.push_back( std::move( infinite_throwables ) );
 
 	auto free_vendor = std::make_unique< ft_free_vendor >();
-	free_vendor->set_name(L"Free Vendor");
-	free_vendor->set_virtual_key_code(VK_NUMPAD3);
-	free_vendor->set_activation_delay(500);
-	free_vendor->set_print_status(true);
+	free_vendor->set_name( L"Free Vendor" );
+	free_vendor->set_virtual_key_code( VK_NUMPAD3 );
+	free_vendor->set_activation_delay( 500 );
+	free_vendor->set_print_status( true );
 	this->m_features.push_back( std::move( free_vendor ) );
+
+	auto infinite_stimpacks = std::make_unique< ft_infinite_stimpacks >();
+	infinite_stimpacks->set_name( L"Infinite Stimpacks" );
+	infinite_stimpacks->set_virtual_key_code( VK_NUMPAD4 );
+	infinite_stimpacks->set_activation_delay( 500 );
+	infinite_stimpacks->set_print_status( true );
+	this->m_features.push_back( std::move( infinite_stimpacks ) );
+
+	auto god_mode = std::make_unique< ft_god_mode >();
+	god_mode->set_name( L"God Mode" );
+	god_mode->set_virtual_key_code( VK_NUMPAD5 );
+	god_mode->set_activation_delay( 500 );
+	god_mode->set_print_status( true );
+	this->m_features.push_back( std::move( god_mode ) );
 	
     return true;
 }
@@ -66,6 +82,30 @@ bool farcry_cheat::setup_offsets()
 		return false;
 
 	Offsets::free_vendor_patch = vendor_patch;
+
+
+	const auto infinite_arrows = image->find_pattern( L"2B C1 89 03 48 8B 5C 24 30", false );
+
+	if( !infinite_arrows )
+		return false;
+
+	Offsets::infinite_arrows_patch = infinite_arrows;
+
+
+	const auto infinite_stimpacks = image->find_pattern( L"FF C8 48 89 5C 24 38 89", false );
+
+	if( !infinite_stimpacks )
+		return false;
+
+	Offsets::infinite_stimpacks_patch = infinite_stimpacks;
+
+
+	const auto god_mode = image->find_pattern( L"72 03 B0 01 C3 32 C0 C3 CC 48", false );
+
+	if( !god_mode )
+		return false;
+
+	Offsets::god_mode_patch = god_mode;
 	
     return true;
 }
@@ -120,6 +160,9 @@ void farcry_cheat::print_offsets()
 	msg(L"Infinite Ammo Patch", Offsets::infinite_ammo_patch);
 	msg(L"Infinite Throwables Patch", Offsets::infinite_throwables_patch);
 	msg(L"Free Vendor Patch", Offsets::free_vendor_patch);
+	msg( L"Infinite Bow Arrows Patch", Offsets::infinite_arrows_patch );
+	msg( L"Infinite Stimpacks Patch", Offsets::infinite_stimpacks_patch );
+	msg( L"God Mode Patch", Offsets::god_mode_patch );
 
 	printf("\n");
 }
