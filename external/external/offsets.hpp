@@ -19,6 +19,8 @@ namespace Offsets
 	inline std::ptrdiff_t god_mode_patch = std::ptrdiff_t();
 
 	inline std::ptrdiff_t unlock_buyables_patch = std::ptrdiff_t();
+
+	inline std::ptrdiff_t infinite_backpack_patch = std::ptrdiff_t();
 }
 
 

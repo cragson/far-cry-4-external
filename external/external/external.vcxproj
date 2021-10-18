@@ -147,6 +147,7 @@
     <ClCompile Include="ft_free_vendor.cpp" />
     <ClCompile Include="ft_god_mode.cpp" />
     <ClCompile Include="ft_infinite_ammo.cpp" />
+    <ClCompile Include="ft_infinite_backpack.cpp" />
     <ClCompile Include="ft_infinite_stimpacks.cpp" />
     <ClCompile Include="ft_infinite_throwables.cpp" />
     <ClCompile Include="ft_unlock_buyables.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="ft_free_vendor.hpp" />
     <ClInclude Include="ft_god_mode.hpp" />
     <ClInclude Include="ft_infinite_ammo.hpp" />
+    <ClInclude Include="ft_infinite_backpack.hpp" />
     <ClInclude Include="ft_infinite_stimpacks.hpp" />
     <ClInclude Include="ft_infinite_throwables.hpp" />
     <ClInclude Include="ft_unlock_buyables.hpp" />
