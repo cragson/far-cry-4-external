@@ -21,6 +21,10 @@ namespace Offsets
 	inline std::ptrdiff_t unlock_buyables_patch = std::ptrdiff_t();
 
 	inline std::ptrdiff_t infinite_backpack_patch = std::ptrdiff_t();
+
+	inline std::ptrdiff_t player_viewvelocity_y = std::ptrdiff_t();
+
+	inline std::ptrdiff_t cali_mode = std::ptrdiff_t();
 }
 
 

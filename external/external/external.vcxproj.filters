@@ -53,6 +53,12 @@
     <ClCompile Include="ft_infinite_backpack.cpp">
       <Filter>Files\Features</Filter>
     </ClCompile>
+    <ClCompile Include="ft_norecoil.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
+    <ClCompile Include="ft_cali_mode.cpp">
+      <Filter>Files\Features</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="osmium\Memory\Process\process.hpp">
@@ -101,6 +107,12 @@
       <Filter>Files\Features</Filter>
     </ClInclude>
     <ClInclude Include="ft_infinite_backpack.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_norecoil.hpp">
+      <Filter>Files\Features</Filter>
+    </ClInclude>
+    <ClInclude Include="ft_cali_mode.hpp">
       <Filter>Files\Features</Filter>
     </ClInclude>
   </ItemGroup>

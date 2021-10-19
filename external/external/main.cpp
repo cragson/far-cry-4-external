@@ -5,7 +5,7 @@
 
 int main()
 {
-	SetConsoleTitleA( "Far Cry 4 external" );
+	SetConsoleTitleA( "cragson: Far Cry 4 external" );
 
 	printf( "[>] Waiting for the game process.." );
 

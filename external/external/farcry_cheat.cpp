@@ -9,6 +9,8 @@
 #include "ft_god_mode.hpp"
 #include "ft_unlock_buyables.hpp"
 #include "ft_infinite_backpack.hpp"
+#include "ft_norecoil.hpp"
+#include "ft_cali_mode.hpp"
 
 bool farcry_cheat::setup_features()
 {
@@ -60,6 +62,20 @@ bool farcry_cheat::setup_features()
 	infinite_backpack->set_activation_delay( 500 );
 	infinite_backpack->set_print_status( true );
 	this->m_features.push_back( std::move( infinite_backpack ) );
+
+	auto norecoil = std::make_unique< ft_norecoil >();
+	norecoil->set_name( L"Norecoil" );
+	norecoil->set_virtual_key_code( VK_NUMPAD8 );
+	norecoil->set_activation_delay( 500 );
+	norecoil->set_print_status( true );
+	this->m_features.push_back( std::move( norecoil ) );
+
+	auto cali_mode = std::make_unique< ft_cali_mode >();
+	cali_mode->set_name( L"Cali Mode" );
+	cali_mode->set_virtual_key_code( VK_NUMPAD9 );
+	cali_mode->set_activation_delay( 500 );
+	cali_mode->set_print_status( true );
+	this->m_features.push_back( std::move( cali_mode ) );
 	
     return true;
 }
@@ -124,7 +140,8 @@ bool farcry_cheat::setup_offsets()
 	Offsets::god_mode_patch = god_mode;
 
 
-	// credits: gir489
+	// credits for this feature to gir489
+	// Thank you! :)
 	const auto unlock_buyables = image->find_pattern( L"4C 8B FA 74 0A", false );
 
 	if( !unlock_buyables )
@@ -139,8 +156,28 @@ bool farcry_cheat::setup_offsets()
 		return false;
 
 	Offsets::infinite_backpack_patch = infinite_backpack;
-	
-    return true;
+
+
+	const auto player_recoil_y = image->find_pattern( L"F3 0F 59 35 ? ? ? ? 48 85 DB", false );
+
+	if( !player_recoil_y )
+		return false;
+
+	Offsets::player_viewvelocity_y = static_cast< uint32_t >( image->deref_address< std::uintptr_t >( player_recoil_y + 4 ) + player_recoil_y + 8 - image->get_image_base() ) + image->get_image_base();
+
+
+	const auto cali = image->find_pattern( L"0F 2E 3D ? ? ? ? 75 0A", false );
+
+	if( !cali )
+		return false;
+
+	Offsets::cali_mode = static_cast< uint32_t >( image->deref_address< std::uintptr_t >( cali + 3 ) + cali + 7 - image->get_image_base() ) + image->get_image_base();
+
+	// A small gift for the interested reader
+	// F2 0F 11 0D ? ? ? ? EB 25 + 4 in FC64.dll as float
+	// play with it a little and have fun ;)
+
+	return true;
 }
 
 void farcry_cheat::run()
@@ -183,21 +220,23 @@ void farcry_cheat::print_features()
 
 void farcry_cheat::print_offsets()
 {
-	printf("\n");
+	printf( "\n" );
 
-	const auto msg = [](const std::wstring& name, const std::uintptr_t value)
+	const auto msg = []( const std::wstring& name, const std::uintptr_t value )
 	{
-		printf("[>] %-35ws -> 0x%llX\n", name.c_str(), value);
+		printf( "[>] %-35ws -> 0x%llX\n", name.c_str(), value );
 	};
 
-	msg(L"Infinite Ammo Patch", Offsets::infinite_ammo_patch );
-	msg(L"Infinite Throwables Patch", Offsets::infinite_throwables_patch );
-	msg(L"Free Vendor Patch", Offsets::free_vendor_patch );
+	msg( L"Infinite Ammo Patch", Offsets::infinite_ammo_patch );
+	msg( L"Infinite Throwables Patch", Offsets::infinite_throwables_patch );
+	msg( L"Free Vendor Patch", Offsets::free_vendor_patch );
 	msg( L"Infinite Bow Arrows Patch", Offsets::infinite_arrows_patch );
 	msg( L"Infinite Stimpacks Patch", Offsets::infinite_stimpacks_patch );
 	msg( L"God Mode Patch", Offsets::god_mode_patch );
 	msg( L"Unlock Buyables Patch", Offsets::unlock_buyables_patch );
 	msg( L"Infinite Backpack Patch", Offsets::infinite_backpack_patch );
+	msg( L"Player Viewvelocity Y", Offsets::player_viewvelocity_y );
+	msg( L"Cali Mode", Offsets::cali_mode );
 
-	printf("\n");
+	printf( "\n" );
 }
